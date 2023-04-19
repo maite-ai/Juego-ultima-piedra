@@ -15,7 +15,7 @@ while stones > 0:
     while gamer_user < 1 or gamer_user > 3 or gamer_user > stones:
         gamer_user = int(input("Esa no es una opción válida. Intenta de nuevo.\n"))
     stones -= gamer_user
-    if gamer_user == 1 and stones == 1:
+    if gamer_user == 1 and stones == 0:
         print("Lo lamento... ¡PERDISTE! Pero... ¡Felicidades a la máquina! :D")
         print("\n\t * FIN DEL JUEGO *")
         break
