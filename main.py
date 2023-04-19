@@ -1,41 +1,31 @@
 import random
 
-# Creo una variable donde se almacena la cantidad de piedras con la que se comienza el juego y una variable auxiliar.
-stone_number = random.choice(range(10, 21))
-aux = 1
+# Creo una variable donde se almacena la cantidad de piedras con la que se comienza el juego.
+stones = random.choice(range(10, 21))
 
-print(f"El juego inicia con {stone_number} piedras")
+print("\t * ¡BIENVENID@ AL JUEGO DE LA ÚLTIMA PIEDRA! *")
 
+# Ciclo principal (mientras la cantidad de piedras sea mayor a 0)
+while stones > 0:
+    print(f"\nHay {stones} piedras")
 
-# Mientras la cantidad sea mayor que la variable aux, pedirle al usuario que ingrese un número entre 1 y 3.
-while stone_number >= aux:
-    print("\n¡Tu turno!")
-    print("----------")
-    gamer_u = int(input("Ingresa un número entre 1 y 3: "))
+    # Turno del usuario
+    gamer_user = int(input("¿Cuántas piedras vas a retirar? (1 a 3)\n"))
+    # Condición: Mientras el usuario ingrese valores por fuera de los permitidos, se le pedirá ingresar otro valor.
+    while gamer_user < 1 or gamer_user > 3 or gamer_user > stones:
+        gamer_user = int(input("Esa no es una opción válida. Intenta de nuevo.\n"))
+    stones -= gamer_user
+    if gamer_user == 1 and stones == 1:
+        print("Lo lamento... ¡PERDISTE! Pero... ¡Felicidades a la máquina! :D")
+        print("\n\t * FIN DEL JUEGO *")
+        break
 
-    # Condición: si ingresa uno de los 3 valores, se descuenta ese valor de la cantidad.
-    if gamer_u > 3:
-        print("¡No permitido! Tienes que tomar 1, 2 ó 3 piedras\n")
-        stone_number = stone_number
-    else:
-        print(f"Retiraste {gamer_u} piedras")
-        stone_number -= gamer_u
-        print(f"Quedan {stone_number} piedras")
-        if stone_number == 0:
-            print("¡PERDISTE!")
-
-        # Ahora le toca jugar a la máquina
-        print("\nEs el turno de la máquina")
-        print("----------------------------")
-        if stone_number > 3:
-            machine = random.choice(range(1, 4))
-            print(f"La máquina retira {machine} piedras")
-            stone_number -= machine
-        elif stone_number == 2:
-            print("La máquina retira 1 piedra")
-            stone_number -= 1
-        else:
-            stone_number -= 1
-            print("¡GANASTE! Fin del juego")
-
-    print(f"Quedan {stone_number} piedras")
+    print("----------------------------")
+    # Turno de la máquina
+    gamer_machine = random.randint(1, min(3, stones))
+    print(f"La máquina retiró {gamer_machine} piedras")
+    stones -= gamer_machine
+    if stones == 0:
+        print("¡GANASTE! ¡Felicidades!")
+        print("\n\t * FIN DEL JUEGO *")
+        break
