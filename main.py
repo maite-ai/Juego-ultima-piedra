@@ -13,7 +13,7 @@ while stones > 0:
     gamer_user = int(input("¿Cuántas piedras vas a retirar? (1 a 3)\n"))
     # Condición: Mientras el usuario ingrese valores por fuera de los permitidos, se le pedirá ingresar otro valor.
     while gamer_user < 1 or gamer_user > 3 or gamer_user > stones:
-        gamer_user = int(input("Esa no es una opción válida. Intenta de nuevo.\n"))
+        gamer_user = int(input("Esa no es una opción válida. Intenta de nuevo: \n"))
     stones -= gamer_user
     if gamer_user == 1 and stones == 0:
         print("Lo lamento... ¡PERDISTE! Pero... ¡Felicidades a la máquina! :D")
